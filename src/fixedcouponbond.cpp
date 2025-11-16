@@ -10,12 +10,12 @@ using date::operator-;
 constexpr float DAYS_IN_A_YEAR = 365; // 260 in case weekends shouldn't be counted
 
 FixedCouponBond::FixedCouponBond(const input_parser::InputParams& params)
-    : notional(params.getParam<typeof(notional)>("notional"))
-    , annualCoupon(params.getParam<typeof(annualCoupon)>("annual_coupon"))
-    , frequency(params.getParam<typeof(frequency)>("frequency"))
-    , discountRate(params.getParam<typeof(discountRate)>("discount_rate"))
-    , currentDate(params.getParam<typeof(currentDate)>("date"))
-    , maturity(params.getParam<typeof(maturity)>("maturity"))
+    : notional(params.getParam<decltype(notional)>("notional"))
+    , annualCoupon(params.getParam<decltype(annualCoupon)>("annual_coupon"))
+    , frequency(params.getParam<decltype(frequency)>("frequency"))
+    , discountRate(params.getParam<decltype(discountRate)>("discount_rate"))
+    , currentDate(params.getParam<decltype(currentDate)>("date"))
+    , maturity(params.getParam<decltype(maturity)>("maturity"))
     , daysUntilMaturity(maturity - currentDate), paymentStep(12/frequency)
 {
     assert(notional > 0);
@@ -59,7 +59,7 @@ double FixedCouponBond::couponAmount() const {
 }
 
 int FixedCouponBond::getPaymentsCount() const {
-    return (daysUntilMaturity/DAYS_IN_A_YEAR) * static_cast<int>(frequency);
+    return static_cast<int>(std::floor((daysUntilMaturity/DAYS_IN_A_YEAR) * static_cast<int>(frequency)));
 }
 
 std::vector<FixedCouponBond::Date> FixedCouponBond::getPaymentDates() const {

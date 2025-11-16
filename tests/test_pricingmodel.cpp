@@ -5,9 +5,9 @@
 void testPricingAnnual() {
     pricing_model::FixedCouponBond bond(
         100,        // notional
-        0.05,         // annual coupon
+        0.05f,         // annual coupon
         Frequency::ANNUAL, // frequency
-        0.03,         // discount rate
+        0.03f,         // discount rate
         date::Date{std::chrono::year{2025}, std::chrono::month{11}, std::chrono::day{15}},  // current date
         date::Date{std::chrono::year{2028}, std::chrono::month{11}, std::chrono::day{15}} // maturity
     );
@@ -17,9 +17,9 @@ void testPricingAnnual() {
 void testPricingQuarterly() {
     pricing_model::FixedCouponBond bond(
         100,        // notional
-        0.07,         // annual coupon
+        0.07f,         // annual coupon
         Frequency::QUARTERLY, // frequency
-        0.045,         // discount rate
+        0.045f,         // discount rate
         date::Date{std::chrono::year{2023}, std::chrono::month{5}, std::chrono::day{1}},  // current date
         date::Date{std::chrono::year{2026}, std::chrono::month{5}, std::chrono::day{1}} // maturity
     );
@@ -29,9 +29,9 @@ void testPricingQuarterly() {
 void testPricingMonthly() {
     pricing_model::FixedCouponBond bond(
         1000,        // notional
-        0.05,         // annual coupon
+        0.05f,         // annual coupon
         Frequency::MONTHLY, // frequency
-        0.03,         // discount rate
+        0.03f,         // discount rate
         date::Date{std::chrono::year{2022}, std::chrono::month{11}, std::chrono::day{8}},  // current date
         date::Date{std::chrono::year{2025}, std::chrono::month{10}, std::chrono::day{1}} // maturity
     );
@@ -41,9 +41,9 @@ void testPricingMonthly() {
 void testPricingPaymentFallsOnDate() {
     pricing_model::FixedCouponBond bond(
         1000,        // notional
-        0.05,         // annual coupon
+        0.05f,         // annual coupon
         Frequency::MONTHLY, // frequency
-        0.03,         // discount rate
+        0.03f,         // discount rate
         date::Date{std::chrono::year{2025}, std::chrono::month{10}, std::chrono::day{3}},  // current date
         date::Date{std::chrono::year{2025}, std::chrono::month{11}, std::chrono::day{3}} // maturity
     );

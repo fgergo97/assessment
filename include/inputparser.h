@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cctype>
 #include <functional>
+#include <algorithm>
 
 #include "frequency.h"
 #include "date.h"
@@ -28,7 +29,8 @@ template <>
 struct stringConverter<Frequency> {
     static std::optional<Frequency> fromString(const std::string& str) {
         std::string copy = str;
-        std::transform(std::begin(copy), std::end(copy), std::begin(copy), ::tolower);
+        std::transform(std::begin(copy), std::end(copy), std::begin(copy),
+            [](unsigned char c) { return std::tolower(c); });
         const auto it = strToFrequency.find(copy);
         if (it != std::cend(strToFrequency)) {
             return it->second;
