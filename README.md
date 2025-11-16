@@ -2,6 +2,11 @@
 ### Requirements
 - CMake 3.10 or higher
 - C++20 compatible compiler
+- Windows 10 and 11
+    - Microsoft Visual Studio 2022
+- Ubuntu 22.04 and 24.04
+
+Windows 11, 64-bi
 ### Build
 ```
 mkdir build
